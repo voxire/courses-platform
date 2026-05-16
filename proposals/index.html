@@ -1763,7 +1763,7 @@
           </ul>
           <div class="option-fit">
             <strong>Best for</strong>
-            Growing branch
+            Growing brand
           </div>
           <div class="option-maintenance">
             Monthly maintenance: <strong>from $500/mo</strong>
@@ -2030,7 +2030,7 @@
             <div class="form-field">
               <label class="form-label">Pick the tier you're considering. You can change your mind later.</label>
               <div class="option-pills">
-                <label class="pill"><input type="radio" name="tier" value="Tier 1: Starter ($4,800)"><span>Tier 1: Starter ($4,800)</span></label>
+                <label class="pill"><input type="radio" name="tier" value="Tier 1: Starter ($6,500)"><span>Tier 1: Starter ($6,500)</span></label>
                 <label class="pill"><input type="radio" name="tier" value="Tier 2: Standard ($11,500)"><span>Tier 2: Standard ($11,500)</span></label>
                 <label class="pill"><input type="radio" name="tier" value="Tier 3: Premium ($22,000)"><span>Tier 3: Premium ($22,000)</span></label>
                 <label class="pill"><input type="radio" name="tier" value="Not sure yet"><span>Not sure yet</span></label>
@@ -2052,12 +2052,12 @@
                 <label class="addon-select"><input type="checkbox" name="addons" value="Multi-instructor marketplace (+$4,200)"><span class="addon-select-emoji">🛒</span><span class="addon-select-body"><span class="addon-select-title">Multi-instructor marketplace</span><span class="addon-select-price">+ $4,200</span></span><span class="addon-select-check"></span></label>
                 <label class="addon-select"><input type="checkbox" name="addons" value="Affiliate / referral program (+$1,100)"><span class="addon-select-emoji">🔗</span><span class="addon-select-body"><span class="addon-select-title">Affiliate / referral program</span><span class="addon-select-price">+ $1,100</span></span><span class="addon-select-check"></span></label>
                 <label class="addon-select"><input type="checkbox" name="addons" value="Email marketing automation (+$1,000)"><span class="addon-select-emoji">✉️</span><span class="addon-select-body"><span class="addon-select-title">Email marketing automation</span><span class="addon-select-price">+ $1,000</span></span><span class="addon-select-check"></span></label>
-                <label class="addon-select"><input type="checkbox" name="addons" value="DRM video protection (+$1,500 setup)"><span class="addon-select-emoji">🔒</span><span class="addon-select-body"><span class="addon-select-title">DRM video protection</span><span class="addon-select-price">+ $1,500 setup</span></span><span class="addon-select-check"></span></label>
+                <label class="addon-select"><input type="checkbox" name="addons" value="Enterprise DRM protection (Custom quote)"><span class="addon-select-emoji">🔒</span><span class="addon-select-body"><span class="addon-select-title">Enterprise DRM protection</span><span class="addon-select-price">Custom quote</span></span><span class="addon-select-check"></span></label>
                 <label class="addon-select"><input type="checkbox" name="addons" value="Subscriptions (Netflix-style) (+$1,300)"><span class="addon-select-emoji">🔁</span><span class="addon-select-body"><span class="addon-select-title">Subscriptions (Netflix-style)</span><span class="addon-select-price">+ $1,300</span></span><span class="addon-select-check"></span></label>
-                <label class="addon-select"><input type="checkbox" name="addons" value="Custom branding & UI (+$1,500)"><span class="addon-select-emoji">🎨</span><span class="addon-select-body"><span class="addon-select-title">Custom branding &amp; UI</span><span class="addon-select-price">+ $1,500</span></span><span class="addon-select-check"></span></label>
+                <label class="addon-select"><input type="checkbox" name="addons" value="Premium branding & UI upgrade (+$1,500)"><span class="addon-select-emoji">🎨</span><span class="addon-select-body"><span class="addon-select-title">Premium branding &amp; UI upgrade</span><span class="addon-select-price">+ $1,500</span></span><span class="addon-select-check"></span></label>
                 <label class="addon-select"><input type="checkbox" name="addons" value="SEO setup & blog (+$900)"><span class="addon-select-emoji">🔍</span><span class="addon-select-body"><span class="addon-select-title">SEO setup &amp; blog</span><span class="addon-select-price">+ $900</span></span><span class="addon-select-check"></span></label>
                 <label class="addon-select"><input type="checkbox" name="addons" value="Content migration (+$600 to $1,500)"><span class="addon-select-emoji">📥</span><span class="addon-select-body"><span class="addon-select-title">Content migration</span><span class="addon-select-price">+ $600 to $1,500</span></span><span class="addon-select-check"></span></label>
-                <label class="addon-select"><input type="checkbox" name="addons" value="Extra languages (+$700/language)"><span class="addon-select-emoji">🌍</span><span class="addon-select-body"><span class="addon-select-title">Extra languages</span><span class="addon-select-price">+ $700 / language</span></span><span class="addon-select-check"></span></label>
+                <label class="addon-select"><input type="checkbox" name="addons" value="Extra languages (+$300/language)"><span class="addon-select-emoji">🌍</span><span class="addon-select-body"><span class="addon-select-title">Extra languages</span><span class="addon-select-price">+ $300 / language</span></span><span class="addon-select-check"></span></label>
               </div>
             </div>
           </div>
@@ -2387,8 +2387,8 @@
     }
 
     function isEstimateAddon(str) {
-      // True if the add-on has a range price, per-language pricing, or setup-only label
-      return /\bto \$|\/\s*language|setup/i.test(String(str || ''));
+      // True if the add-on has a range price, per-language pricing, custom quote, or setup-only label
+      return /\bto \$|\/\s*language|setup|custom\s*quote/i.test(String(str || ''));
     }
 
     function formatMoney(n) {
