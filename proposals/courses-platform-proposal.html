@@ -1,0 +1,2531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Course Platform Proposal | Voxire</title>
+<meta name="description" content="Voxire's proposal for a custom online course platform built for Lebanese audiences, local payment integration, and bilingual UX.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* ========================================
+     VOXIRE COURSE PLATFORM PROPOSAL
+     Mobile-first. Dark theme. Voxire palette.
+     ======================================== */
+
+  :root {
+    --voxire-teal: #63C6BD;
+    --voxire-blue: #519AD1;
+    --voxire-purple: #5A4398;
+    --bg-base: #111118;
+    --bg-raised: #15171D;
+    --bg-elevated: #1C1F27;
+    --text-primary: #ECEDF1;
+    --text-muted: #8B8F9B;
+    --text-dim: #5C6068;
+    --border-subtle: #232730;
+    --border-strong: #2E3340;
+    --gradient-brand: linear-gradient(90deg, #63C6BD 0%, #519AD1 55%, #5A4398 100%);
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: var(--bg-base);
+    color: var(--text-primary);
+    line-height: 1.65;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: var(--voxire-teal);
+    color: var(--bg-base);
+  }
+
+  .container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  section {
+    padding: 72px 0;
+    position: relative;
+  }
+
+  h1, h2, h3, h4 {
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    font-weight: 600;
+  }
+
+  h1 {
+    font-size: 2.25rem;
+    font-weight: 700;
+  }
+
+  h2 {
+    font-size: 1.75rem;
+    margin-bottom: 24px;
+  }
+
+  h3 {
+    font-size: 1.25rem;
+    margin-bottom: 12px;
+  }
+
+  p {
+    color: var(--text-primary);
+    margin-bottom: 16px;
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+
+  a {
+    color: var(--voxire-teal);
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+
+  a:hover {
+    color: var(--voxire-blue);
+  }
+
+  .gradient-text {
+    background: var(--gradient-brand);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  .eyebrow {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--voxire-teal);
+    margin-bottom: 16px;
+  }
+
+  .muted {
+    color: var(--text-muted);
+  }
+
+  .divider {
+    height: 1px;
+    background: var(--border-subtle);
+    border: 0;
+    margin: 0;
+  }
+
+  /* ========================================
+     HEADER
+     ======================================== */
+
+  header {
+    padding: 24px 0;
+    border-bottom: 1px solid var(--border-subtle);
+    background: rgba(17, 17, 24, 0.8);
+    backdrop-filter: blur(12px);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  .header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .wordmark {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    background: var(--gradient-brand);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  .header-meta {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    text-align: right;
+  }
+
+  /* ========================================
+     HERO
+     ======================================== */
+
+  .hero {
+    padding: 80px 0 64px;
+    position: relative;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 320px;
+    background: radial-gradient(ellipse at center, rgba(99, 198, 189, 0.08), transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .hero > .container {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 24px;
+    max-width: 22ch;
+  }
+
+  .hero-sub {
+    font-size: 1.0625rem;
+    color: var(--text-muted);
+    max-width: 56ch;
+    margin-bottom: 32px;
+  }
+
+  .hero-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 0.875rem;
+    color: var(--text-dim);
+    padding-top: 24px;
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .hero-meta strong {
+    color: var(--text-primary);
+    font-weight: 500;
+  }
+
+  /* ========================================
+     OPPORTUNITY
+     ======================================== */
+
+  .opportunity p {
+    font-size: 1.0625rem;
+  }
+
+  .opportunity .lead {
+    font-size: 1.1875rem;
+    color: var(--text-primary);
+    max-width: 60ch;
+    margin-bottom: 24px;
+  }
+
+  .stat-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 32px;
+  }
+
+  .stat-card {
+    padding: 24px;
+    background: var(--bg-raised);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+  }
+
+  .stat-value {
+    font-size: 1.75rem;
+    font-weight: 700;
+    background: var(--gradient-brand);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    margin-bottom: 4px;
+    letter-spacing: -0.02em;
+  }
+
+  .stat-label {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+  }
+
+  /* ========================================
+     JOURNEY
+     ======================================== */
+
+  .journey-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 32px;
+  }
+
+  .journey-step {
+    padding: 24px;
+    background: var(--bg-raised);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    position: relative;
+  }
+
+  .journey-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, rgba(99, 198, 189, 0.15), rgba(81, 154, 209, 0.15));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    color: var(--voxire-teal);
+  }
+
+  .journey-step-number {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-dim);
+    letter-spacing: 0.08em;
+  }
+
+  .journey-step h3 {
+    font-size: 1.125rem;
+    margin-bottom: 6px;
+  }
+
+  .journey-step p {
+    color: var(--text-muted);
+    font-size: 0.9375rem;
+    margin: 0;
+  }
+
+  /* ========================================
+     SCOPE (plain language)
+     ======================================== */
+
+  .scope-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 24px;
+  }
+
+  .scope-block {
+    padding: 24px;
+    background: var(--bg-raised);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+  }
+
+  .scope-block h3 {
+    font-size: 1.0625rem;
+    margin-bottom: 8px;
+    color: var(--voxire-teal);
+  }
+
+  .scope-block p {
+    color: var(--text-muted);
+    font-size: 0.9375rem;
+    margin: 0;
+  }
+
+  .scope-note {
+    margin-top: 32px;
+    padding: 20px 24px;
+    background: var(--bg-raised);
+    border: 1px solid var(--border-subtle);
+    border-left: 3px solid var(--voxire-teal);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-size: 0.9375rem;
+  }
+
+  /* ========================================
+     OPTIONS / PRICING TIERS
+     ======================================== */
+
+  .options {
+    background: var(--bg-raised);
+    border-top: 1px solid var(--border-subtle);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .options-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-top: 32px;
+  }
+
+  .option-maintenance {
+    padding: 14px 16px;
+    background: var(--bg-raised);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    margin-top: 12px;
+    text-align: center;
+    letter-spacing: 0.02em;
+  }
+
+  .option-maintenance strong {
+    color: var(--voxire-teal);
+    font-weight: 600;
+  }
+
+  /* ========================================
+     ADD-ONS
+     ======================================== */
+
+  .addon-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 32px;
+  }
+
+  .addon-card {
+    padding: 24px;
+    background: var(--bg-raised);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.15s ease, transform 0.15s ease;
+  }
+
+  .addon-card:hover {
+    border-color: var(--border-strong);
+    transform: translateY(-1px);
+  }
+
+  .addon-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(99, 198, 189, 0.12), rgba(81, 154, 209, 0.12));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .addon-card h3 {
+    font-size: 1.0625rem;
+    margin-bottom: 6px;
+    line-height: 1.3;
+  }
+
+  .addon-price {
+    font-size: 1.25rem;
+    font-weight: 700;
+    background: var(--gradient-brand);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    letter-spacing: -0.01em;
+    margin-bottom: 12px;
+  }
+
+  .addon-card p {
+    color: var(--text-muted);
+    font-size: 0.9375rem;
+    margin: 0;
+  }
+
+  /* ========================================
+     INTERACTIVE FORM
+     ======================================== */
+
+  .proposal-form {
+    margin-top: 32px;
+  }
+
+  .form-section {
+    margin-bottom: 40px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .form-section:last-of-type {
+    border-bottom: none;
+  }
+
+  .form-section-title {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--voxire-teal);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .form-field {
+    margin-bottom: 20px;
+  }
+
+  .form-field:last-child {
+    margin-bottom: 0;
+  }
+
+  .form-label {
+    display: block;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+  }
+
+  .form-label .required {
+    color: var(--voxire-teal);
+    margin-left: 4px;
+  }
+
+  .form-hint {
+    display: block;
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    margin-top: 4px;
+    margin-bottom: 8px;
+  }
+
+  .form-input,
+  .form-textarea {
+    width: 100%;
+    padding: 12px 16px;
+    background: var(--bg-raised);
+    border: 1px solid var(--border-strong);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    min-height: 48px;
+    transition: border-color 0.15s ease, background 0.15s ease;
+  }
+
+  .form-textarea {
+    min-height: 80px;
+    resize: vertical;
+  }
+
+  .form-input::placeholder,
+  .form-textarea::placeholder {
+    color: var(--text-dim);
+  }
+
+  .form-input:focus,
+  .form-textarea:focus {
+    outline: none;
+    border-color: var(--voxire-teal);
+    background: var(--bg-elevated);
+  }
+
+  .form-input:invalid:not(:placeholder-shown),
+  .form-textarea:invalid:not(:placeholder-shown) {
+    border-color: rgba(232, 115, 106, 0.4);
+  }
+
+  /* MCQ pill buttons (radio + checkbox shared styling) */
+  .option-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .pill {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background: var(--bg-raised);
+    border: 1px solid var(--border-strong);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    min-height: 44px;
+    transition: all 0.15s ease;
+    user-select: none;
+  }
+
+  .pill input[type="radio"],
+  .pill input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .pill:hover {
+    border-color: var(--text-muted);
+    background: var(--bg-elevated);
+  }
+
+  .pill:has(input:checked) {
+    background: linear-gradient(135deg, rgba(99, 198, 189, 0.15), rgba(81, 154, 209, 0.1));
+    border-color: var(--voxire-teal);
+    color: var(--voxire-teal);
+  }
+
+  .pill:has(input:checked)::before {
+    content: '';
+    width: 14px;
+    height: 14px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2363C6BD' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg>");
+    background-size: contain;
+    background-repeat: no-repeat;
+    flex-shrink: 0;
+  }
+
+  /* Add-on selection cards (richer than pills) */
+  .addon-select-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .addon-select {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 16px;
+    background: var(--bg-raised);
+    border: 1px solid var(--border-strong);
+    border-radius: 10px;
+    cursor: pointer;
+    min-height: 56px;
+    transition: all 0.15s ease;
+    user-select: none;
+  }
+
+  .addon-select input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .addon-select-emoji {
+    font-size: 1.25rem;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .addon-select-body {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .addon-select-title {
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 2px;
+    line-height: 1.3;
+  }
+
+  .addon-select-price {
+    font-size: 0.8125rem;
+    color: var(--voxire-teal);
+    font-weight: 600;
+  }
+
+  .addon-select-check {
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    border: 1.5px solid var(--border-strong);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s ease;
+  }
+
+  .addon-select:hover {
+    border-color: var(--text-muted);
+    background: var(--bg-elevated);
+  }
+
+  .addon-select:has(input:checked) {
+    background: linear-gradient(135deg, rgba(99, 198, 189, 0.1), rgba(81, 154, 209, 0.06));
+    border-color: var(--voxire-teal);
+  }
+
+  .addon-select:has(input:checked) .addon-select-check {
+    background: var(--voxire-teal);
+    border-color: var(--voxire-teal);
+  }
+
+  .addon-select:has(input:checked) .addon-select-check::before {
+    content: '';
+    width: 12px;
+    height: 12px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23111118' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg>");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  /* Live total */
+  .form-total {
+    margin-top: 32px;
+    padding: 28px 28px 24px;
+    background: linear-gradient(135deg, rgba(99, 198, 189, 0.10), rgba(81, 154, 209, 0.06) 55%, rgba(90, 67, 152, 0.08));
+    border: 1px solid var(--voxire-teal);
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 0 0 1px rgba(99, 198, 189, 0.15), 0 18px 48px rgba(99, 198, 189, 0.08);
+    transition: transform 0.2s ease;
+  }
+
+  .form-total-eyebrow {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    color: var(--voxire-teal);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .form-total-price {
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: var(--gradient-brand);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    letter-spacing: -0.025em;
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+
+  .form-total-breakdown {
+    font-size: 0.9375rem;
+    color: var(--text-primary);
+    line-height: 1.5;
+  }
+
+  .form-total-breakdown .muted {
+    color: var(--text-muted);
+  }
+
+  .form-total-note {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    margin-top: 10px;
+    font-style: italic;
+  }
+
+  @keyframes total-pulse {
+    0% { transform: scale(1); }
+    40% { transform: scale(1.015); }
+    100% { transform: scale(1); }
+  }
+
+  .form-total.is-changing {
+    animation: total-pulse 0.35s ease-out;
+  }
+
+  /* Submit area */
+  .form-submit-area {
+    margin-top: 32px;
+    padding: 28px 0 0;
+    border-top: 1px solid var(--border-subtle);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .form-submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 16px 32px;
+    min-height: 52px;
+    min-width: 240px;
+    background: var(--gradient-brand);
+    color: var(--bg-base);
+    border: 0;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+  }
+
+  .form-submit:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(99, 198, 189, 0.25);
+  }
+
+  .form-submit:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .form-status {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    min-height: 1.5em;
+  }
+
+  .form-status.is-error {
+    color: #E8736A;
+  }
+
+  .form-status.is-success {
+    color: var(--voxire-teal);
+  }
+
+  /* Success state */
+  .form-success-panel {
+    text-align: center;
+    padding: 48px 24px;
+    background: var(--bg-raised);
+    border: 1px solid var(--voxire-teal);
+    border-radius: 16px;
+    box-shadow: 0 0 0 1px rgba(99, 198, 189, 0.2), 0 12px 40px rgba(99, 198, 189, 0.08);
+  }
+
+  .form-success-panel .check-icon {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--voxire-teal), var(--voxire-blue));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .form-success-panel h3 {
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+  }
+
+  .form-success-panel p {
+    color: var(--text-muted);
+    max-width: 44ch;
+    margin: 0 auto;
+  }
+
+  .option-card {
+    padding: 32px 24px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-subtle);
+    border-radius: 16px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .option-card.recommended {
+    border-color: var(--voxire-teal);
+    box-shadow: 0 0 0 1px rgba(99, 198, 189, 0.2), 0 12px 40px rgba(99, 198, 189, 0.08);
+  }
+
+  .option-badge {
+    position: absolute;
+    top: -10px;
+    right: 24px;
+    background: var(--gradient-brand);
+    color: var(--bg-base);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border-radius: 6px;
+  }
+
+  .option-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+  }
+
+  .option-tag {
+    color: var(--text-muted);
+    font-size: 0.9375rem;
+    margin-bottom: 24px;
+  }
+
+  .option-price {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+    margin-bottom: 4px;
+  }
+
+  .option-price small {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    letter-spacing: 0;
+  }
+
+  .option-timeline {
+    font-size: 0.9375rem;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+  }
+
+  .option-payment {
+    padding: 16px;
+    background: var(--bg-raised);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+  }
+
+  .option-payment strong {
+    color: var(--text-primary);
+    font-weight: 500;
+  }
+
+  .option-features {
+    list-style: none;
+    margin-bottom: 24px;
+    flex: 1;
+  }
+
+  .option-features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 8px 0;
+    font-size: 0.9375rem;
+    color: var(--text-primary);
+  }
+
+  .option-features li::before {
+    content: '';
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    margin-top: 3px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2363C6BD' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg>");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  .option-fit {
+    padding: 16px;
+    border-top: 1px solid var(--border-subtle);
+    font-size: 0.875rem;
+    color: var(--text-muted);
+  }
+
+  .option-fit strong {
+    color: var(--voxire-teal);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 4px;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* Feature comparison table */
+  .features-table-wrap {
+    margin-top: 48px;
+    overflow-x: auto;
+    border-radius: 12px;
+    border: 1px solid var(--border-subtle);
+  }
+
+  .features-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9375rem;
+    min-width: 600px;
+  }
+
+  .features-table thead {
+    background: var(--bg-elevated);
+  }
+
+  .features-table th {
+    text-align: left;
+    padding: 16px 20px;
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 0.875rem;
+    letter-spacing: 0.02em;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .features-table th:nth-child(2),
+  .features-table th:nth-child(3) {
+    text-align: center;
+    width: 140px;
+  }
+
+  .features-table td {
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border-subtle);
+    color: var(--text-muted);
+  }
+
+  .features-table td:first-child {
+    color: var(--text-primary);
+  }
+
+  .features-table td:nth-child(2),
+  .features-table td:nth-child(3) {
+    text-align: center;
+  }
+
+  .features-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .check {
+    color: var(--voxire-teal);
+    font-weight: 700;
+  }
+
+  .dash {
+    display: inline-block;
+    width: 16px;
+    height: 2px;
+    background: var(--text-dim);
+    border-radius: 1px;
+    vertical-align: middle;
+  }
+
+  /* ========================================
+     HOW IT WORKS (student)
+     ======================================== */
+
+  .student-journey {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-top: 32px;
+    counter-reset: step;
+  }
+
+  .student-step {
+    padding: 28px 24px;
+    background: var(--bg-raised);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    counter-increment: step;
+    position: relative;
+  }
+
+  .student-step::before {
+    content: counter(step, decimal-leading-zero);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--voxire-teal);
+    letter-spacing: 0.12em;
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  .student-step h3 {
+    margin-bottom: 8px;
+  }
+
+  .student-step p {
+    color: var(--text-muted);
+    margin: 0;
+    font-size: 0.9375rem;
+  }
+
+  /* ========================================
+     RUNNING COSTS
+     ======================================== */
+
+  .costs-note {
+    padding: 20px 24px;
+    background: var(--bg-raised);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    margin-bottom: 32px;
+    font-size: 0.9375rem;
+    color: var(--text-muted);
+  }
+
+  .costs-table-wrap {
+    overflow-x: auto;
+    border-radius: 12px;
+    border: 1px solid var(--border-subtle);
+  }
+
+  .costs-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9375rem;
+    min-width: 520px;
+  }
+
+  .costs-table thead {
+    background: var(--bg-elevated);
+  }
+
+  .costs-table th {
+    text-align: left;
+    padding: 16px 20px;
+    font-weight: 600;
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--border-subtle);
+    font-size: 0.875rem;
+  }
+
+  .costs-table td {
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border-subtle);
+    color: var(--text-muted);
+  }
+
+  .costs-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .costs-table td.cost {
+    color: var(--text-primary);
+    font-weight: 500;
+  }
+
+  .costs-table tfoot td {
+    background: var(--bg-elevated);
+    color: var(--text-primary);
+    font-weight: 600;
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  /* ========================================
+     INVESTMENT (echo of options pricing)
+     ======================================== */
+
+  .investment {
+    background: var(--bg-raised);
+    border-top: 1px solid var(--border-subtle);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .investment-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 32px;
+  }
+
+  .investment-card {
+    padding: 28px 24px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+  }
+
+  .investment-card.recommended {
+    border-color: var(--voxire-teal);
+  }
+
+  .investment-card h3 {
+    font-size: 1.125rem;
+    margin-bottom: 8px;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  .investment-price {
+    font-size: 3rem;
+    font-weight: 700;
+    background: var(--gradient-brand);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    letter-spacing: -0.03em;
+    margin-bottom: 8px;
+    line-height: 1;
+  }
+
+  .investment-price small {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    letter-spacing: 0;
+    -webkit-text-fill-color: var(--text-muted);
+  }
+
+  .investment-meta {
+    color: var(--text-muted);
+    font-size: 0.9375rem;
+    margin-top: 8px;
+  }
+
+  .investment-meta strong {
+    color: var(--text-primary);
+    font-weight: 500;
+  }
+
+  /* ========================================
+     DISCOVERY
+     ======================================== */
+
+  .discovery-intro {
+    max-width: 60ch;
+    color: var(--text-muted);
+    margin-bottom: 32px;
+  }
+
+  .discovery-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    list-style: none;
+    counter-reset: question;
+  }
+
+  .discovery-list li {
+    padding: 16px 20px;
+    background: var(--bg-raised);
+    border: 1px solid var(--border-subtle);
+    border-radius: 10px;
+    color: var(--text-primary);
+    counter-increment: question;
+    position: relative;
+    padding-left: 56px;
+    font-size: 0.9375rem;
+  }
+
+  .discovery-list li::before {
+    content: counter(question, decimal-leading-zero);
+    position: absolute;
+    left: 20px;
+    top: 16px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--voxire-teal);
+    letter-spacing: 0.08em;
+  }
+
+  .discovery-category {
+    margin-top: 32px;
+    margin-bottom: 8px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--voxire-teal);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .discovery-category:first-child {
+    margin-top: 0;
+  }
+
+  /* ========================================
+     WHY VOXIRE
+     ======================================== */
+
+  .why {
+    background: var(--bg-raised);
+    border-top: 1px solid var(--border-subtle);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .why-points {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-top: 32px;
+  }
+
+  .why-card {
+    padding: 28px 24px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+  }
+
+  .why-card h3 {
+    margin-bottom: 8px;
+  }
+
+  .why-card p {
+    color: var(--text-muted);
+    font-size: 0.9375rem;
+    margin: 0;
+  }
+
+  .proof-section {
+    margin-top: 40px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .proof-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 20px;
+  }
+
+  .proof-card {
+    padding: 24px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+  }
+
+  .proof-result {
+    font-size: 1.5rem;
+    font-weight: 700;
+    background: var(--gradient-brand);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    letter-spacing: -0.02em;
+    margin-bottom: 6px;
+  }
+
+  .proof-context {
+    color: var(--text-muted);
+    font-size: 0.9375rem;
+  }
+
+  /* ========================================
+     NEXT STEPS
+     ======================================== */
+
+  .next-steps {
+    text-align: center;
+    padding: 96px 0;
+  }
+
+  .next-steps h2 {
+    margin-bottom: 16px;
+  }
+
+  .next-steps p {
+    color: var(--text-muted);
+    max-width: 48ch;
+    margin: 0 auto 32px;
+  }
+
+  .cta-row {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .cta-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 24px;
+    min-height: 48px;
+    min-width: 220px;
+    border-radius: 10px;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .cta-primary {
+    background: var(--gradient-brand);
+    color: var(--bg-base);
+  }
+
+  .cta-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(99, 198, 189, 0.25);
+    color: var(--bg-base);
+  }
+
+  .cta-secondary {
+    background: var(--bg-raised);
+    color: var(--text-primary);
+    border: 1px solid var(--border-strong);
+  }
+
+  .cta-secondary:hover {
+    border-color: var(--voxire-teal);
+    color: var(--voxire-teal);
+  }
+
+  /* ========================================
+     FOOTER
+     ======================================== */
+
+  footer {
+    padding: 40px 0;
+    border-top: 1px solid var(--border-subtle);
+    text-align: center;
+    font-size: 0.875rem;
+    color: var(--text-dim);
+  }
+
+  footer .wordmark {
+    font-size: 1.125rem;
+    margin-bottom: 12px;
+  }
+
+  footer p {
+    color: var(--text-dim);
+    margin-bottom: 4px;
+    font-size: 0.8125rem;
+  }
+
+  /* ========================================
+     TABLET +
+     ======================================== */
+
+  @media (min-width: 640px) {
+    h1 { font-size: 2.75rem; }
+    h2 { font-size: 2rem; }
+
+    .hero h1 {
+      font-size: 3rem;
+    }
+
+    .stat-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .journey-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .scope-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .addon-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .addon-select-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .student-journey {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .discovery-list {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .why-points {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .proof-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .cta-row {
+      flex-direction: row;
+      max-width: none;
+    }
+  }
+
+  /* ========================================
+     DESKTOP
+     ======================================== */
+
+  @media (min-width: 960px) {
+    section { padding: 96px 0; }
+
+    .hero {
+      padding: 120px 0 96px;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+    }
+
+    .options-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .scope-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .addon-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .journey-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .why-points {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+  }
+
+  /* ========================================
+     PRINT (for Phase 6 PDF export)
+     ======================================== */
+
+  @media print {
+    body {
+      background: white;
+      color: #111118;
+    }
+
+    header {
+      position: static;
+      background: white;
+      border-bottom: 1px solid #ddd;
+    }
+
+    section {
+      page-break-inside: avoid;
+      padding: 32px 0;
+    }
+
+    .hero, .options, .investment, .why {
+      background: white;
+    }
+
+    .stat-card, .journey-step, .option-card, .student-step,
+    .investment-card, .why-card, .proof-card, .discovery-list li,
+    .costs-note {
+      background: white;
+      border: 1px solid #ddd;
+      box-shadow: none;
+    }
+
+    .gradient-text, .stat-value, .wordmark, .investment-price, .proof-result {
+      background: none;
+      -webkit-text-fill-color: #5A4398;
+      color: #5A4398;
+    }
+
+    .cta-button {
+      display: none;
+    }
+
+    a {
+      color: #5A4398;
+    }
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ========== HEADER ========== -->
+<header>
+  <div class="container header-inner">
+    <a href="https://voxire.com" class="wordmark" aria-label="Voxire">Voxire</a>
+    <div class="header-meta">
+      <div>Proposal: Course Platform</div>
+      <div>May 2026</div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero">
+    <div class="container">
+      <span class="eyebrow">Proposal: May 2026</span>
+      <h1>A course platform built for <span class="gradient-text">your audience, your payments, your language.</span></h1>
+      <p class="hero-sub">A custom online education business, designed for Lebanese learners, priced in USD, and integrated with the payment gateway you already use.</p>
+      <div class="hero-meta">
+        <div><strong>Prepared for:</strong> Online education business referred through Ahmad Gherawi, Techneyat</div>
+        <div><strong>Prepared by:</strong> Voxire, Beirut. Abed El-Fattah Amouneh and Mohammad Homsi.</div>
+        <div><strong>Validity:</strong> 30 days from the date above</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ========== OPPORTUNITY ========== -->
+  <section id="opportunity">
+    <div class="container">
+      <span class="eyebrow">The Opportunity</span>
+      <h2>The market is moving. Lebanon does not yet have a serious local platform.</h2>
+      <p class="lead">The Middle East e-learning market is growing from 16.2 billion USD in 2025 to 28.3 billion USD by 2034. Funding into MENA edtech rose 169 percent in Q1 2025. Forecasts show local platforms will own more than 55 percent of the regional learner base by 2029.</p>
+      <p>What Lebanon does not have yet: a creator-led course platform built for local payment, local language, and local design. Global platforms work, but they take 5 to 7.5 percent of every sale, force you onto US payment rails, and treat Arabic as an afterthought.</p>
+      <p>Your platform fixes that.</p>
+
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="stat-value">28.3B USD</div>
+          <div class="stat-label">MENA e-learning market by 2034, up from 16.2B in 2025</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">+169%</div>
+          <div class="stat-label">MENA edtech funding growth, Q1 2025 vs. Q1 2024</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">55%+</div>
+          <div class="stat-label">Share of regional learners forecast to use local platforms by 2029</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ========== WHAT WE BUILD ========== -->
+  <section id="what-we-build">
+    <div class="container">
+      <span class="eyebrow">What We Build</span>
+      <h2>A complete course business in one product.</h2>
+      <p>Your students sign up, discover your courses, pay through your gateway, and start learning. No third-party storefront. No revenue share. No "powered by" badge in the footer. You own the product, the customer data, and the audience.</p>
+
+      <div class="journey-grid">
+        <div class="journey-step">
+          <span class="journey-step-number">01</span>
+          <div class="journey-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <h3>Sign up</h3>
+          <p>Students create an account, verify their email, and join your platform in under a minute.</p>
+        </div>
+        <div class="journey-step">
+          <span class="journey-step-number">02</span>
+          <div class="journey-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+          </div>
+          <h3>Discover</h3>
+          <p>Browse your course catalog. See descriptions, instructors, and previews. SEO-tuned for organic search.</p>
+        </div>
+        <div class="journey-step">
+          <span class="journey-step-number">03</span>
+          <div class="journey-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+          </div>
+          <h3>Pay</h3>
+          <p>Pay through your existing payment gateway. We verify the webhook before unlocking content.</p>
+        </div>
+        <div class="journey-step">
+          <span class="journey-step-number">04</span>
+          <div class="journey-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+          </div>
+          <h3>Learn</h3>
+          <p>Watch protected videos with signed URLs and domain lock. Direct downloads are restricted, and casual resharing is reduced.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SCOPE (plain language) ========== -->
+  <section id="scope">
+    <div class="container">
+      <span class="eyebrow">The Scope, in Plain Language</span>
+      <h2>What we build for you, in detail.</h2>
+      <p class="lead">A complete online education business. Your students arrive on your site, see your courses, pay through your payment system, and immediately get access to video lessons they watch on phone or laptop. The site looks like yours, not ours. The customers belong to you. The revenue flows to your bank.</p>
+      <p style="color: var(--text-muted);">Behind the scenes, we set up everything that makes that work: secure user accounts, password recovery, email verification, signed video URLs and access controls to better protect your lessons, an admin panel where you upload courses and see who bought what, and a marketing-ready public site that ranks in Google.</p>
+      <p style="color: var(--text-muted); margin-top: 24px; margin-bottom: 8px;">The work splits into four pieces. Every tier ships all four.</p>
+
+      <div class="scope-grid">
+        <div class="scope-block">
+          <h3>Design and brand</h3>
+          <p>The look and feel of the platform, tuned to your audience. Mobile-first. Bilingual where needed.</p>
+        </div>
+        <div class="scope-block">
+          <h3>Frontend (the public site)</h3>
+          <p>The marketing pages, the course catalog, the checkout, and the student experience. Fast, SEO-ready, responsive.</p>
+        </div>
+        <div class="scope-block">
+          <h3>Backend (the engine)</h3>
+          <p>The system that handles accounts, payments, access, and video security. Webhook-verified. Audit-logged.</p>
+        </div>
+        <div class="scope-block">
+          <h3>Admin (your dashboard)</h3>
+          <p>The control panel you use to run the business. Upload courses, view sales, manage students, pull reports.</p>
+        </div>
+      </div>
+
+      <div class="scope-note">
+        Every tier ships all four pieces. The difference is depth: how many features, how custom the admin, how production-hardened the video pipeline, and how much room there is for growth.
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PRICING TIERS ========== -->
+  <section id="pricing" class="options">
+    <div class="container">
+      <span class="eyebrow">Pricing Tiers</span>
+      <h2>Pick the level of ambition.</h2>
+      <p style="max-width: 60ch; color: var(--text-muted); margin-bottom: 0;">All three tiers ship a working platform. The difference is depth: how many features, how custom the admin, how production-hardened the video pipeline, and how much room there is for growth.</p>
+
+      <div class="options-grid">
+
+        <!-- Tier 1: Starter -->
+        <div class="option-card">
+          <h3>Tier 1: Starter</h3>
+          <div class="option-price">$6,500<small> USD</small></div>
+          <div class="option-timeline">One-time build &middot; 4 to 6 weeks</div>
+          <p class="option-tag">Launch a clean, paid courses platform fast. Everything you need to start selling.</p>
+          <ul class="option-features">
+            <li>Next.js + custom backend build</li>
+            <li>Email and Google login</li>
+            <li>1 payment gateway integration</li>
+            <li>Course catalog and video player</li>
+            <li>Backblaze B2 video storage and delivery</li>
+            <li>Bilingual EN and AR with RTL</li>
+            <li>Mobile-responsive, PWA-ready</li>
+            <li>Admin panel: courses, users, sales</li>
+            <li>Basic coupons</li>
+            <li>1 month post-launch support</li>
+          </ul>
+          <div class="option-fit">
+            <strong>Best for</strong>
+            Solo instructor
+          </div>
+          <div class="option-maintenance">
+            Monthly maintenance: <strong>from $250/mo</strong>
+          </div>
+        </div>
+
+        <!-- Tier 2: Standard (RECOMMENDED) -->
+        <div class="option-card recommended">
+          <span class="option-badge">Recommended</span>
+          <h3>Tier 2: Standard</h3>
+          <div class="option-price">$11,500<small> USD</small></div>
+          <div class="option-timeline">One-time build &middot; 8 to 10 weeks</div>
+          <p class="option-tag">A full-featured platform that can carry the business for years without a rebuild.</p>
+          <ul class="option-features">
+            <li>Everything in Starter</li>
+            <li>Upgraded video security with signed URLs and stricter access controls</li>
+            <li>Quizzes and auto-graded assessments</li>
+            <li>Completion certificates (PDF)</li>
+            <li>Progress tracking and resume-where-you-left-off</li>
+            <li>Instructor dashboard: revenue, students</li>
+            <li>Coupons, discounts, promo codes</li>
+            <li>Drip content scheduling</li>
+            <li>Reviews and ratings</li>
+            <li>3 months post-launch support</li>
+          </ul>
+          <div class="option-fit">
+            <strong>Best for</strong>
+            Growing branch
+          </div>
+          <div class="option-maintenance">
+            Monthly maintenance: <strong>from $500/mo</strong>
+          </div>
+        </div>
+
+        <!-- Tier 3: Premium -->
+        <div class="option-card">
+          <h3>Tier 3: Premium</h3>
+          <div class="option-price">$22,000<small> USD</small></div>
+          <div class="option-timeline">One-time build &middot; 12 to 16 weeks</div>
+          <p class="option-tag">Marketplace-grade platform with native mobile apps and the analytics to run it like a business.</p>
+          <ul class="option-features">
+            <li>Everything in Standard</li>
+            <li>Multi-instructor marketplace (Udemy-style)</li>
+            <li>Native mobile apps (iOS and Android)</li>
+            <li>Live classes (Zoom integration and recordings)</li>
+            <li>Advanced video access controls</li>
+            <li>Advanced analytics dashboards</li>
+            <li>Email marketing automation (drip)</li>
+            <li>Affiliate / referral program</li>
+            <li>Multi-gateway payment support</li>
+            <li>6 months post-launch support</li>
+          </ul>
+          <div class="option-fit">
+            <strong>Best for</strong>
+            Multi-instructor business, mobile-first.
+          </div>
+          <div class="option-maintenance">
+            Monthly maintenance: <strong>from $1,000/mo</strong>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== OPTIONAL ADD-ONS ========== -->
+  <section id="addons">
+    <div class="container">
+      <span class="eyebrow">Optional Add-Ons</span>
+      <h2>Add only what you need.</h2>
+      <p style="max-width: 64ch; color: var(--text-muted);">Anything from a higher tier can be added to a lower one as an à la carte module. Prices are estimates. Final numbers are locked after scoping with you.</p>
+
+      <div class="addon-grid">
+
+        <div class="addon-card">
+          <div class="addon-icon">📱</div>
+          <h3>Native mobile apps (iOS + Android)</h3>
+          <div class="addon-price">+ $5,500</div>
+          <p>React Native build, shared codebase, App Store and Play Store submission. Offline lesson download is +$800.</p>
+        </div>
+
+        <div class="addon-card">
+          <div class="addon-icon">📲</div>
+          <h3>PWA install (alternative to native)</h3>
+          <div class="addon-price">+ $600</div>
+          <p>Installable on home screen, push notifications. No App Store fees. Great middle ground if you're not ready for native.</p>
+        </div>
+
+        <div class="addon-card">
+          <div class="addon-icon">🎙️</div>
+          <h3>Live classes & Zoom integration</h3>
+          <div class="addon-price">+ $1,400</div>
+          <p>Scheduled live sessions, attendee enrollment from inside the platform, auto-record into the course library.</p>
+        </div>
+
+        <div class="addon-card">
+          <div class="addon-icon">📜</div>
+          <h3>Quizzes, exams & certificates</h3>
+          <div class="addon-price">+ $1,200</div>
+          <p>Auto-graded multiple choice and open-ended questions, branded PDF certificates on completion.</p>
+        </div>
+
+        <div class="addon-card">
+          <div class="addon-icon">📊</div>
+          <h3>Advanced analytics dashboards</h3>
+          <div class="addon-price">+ $1,500</div>
+          <p>Revenue by course, drop-off points, engagement heatmaps, exportable reports, and video playback quality tracking.</p>
+        </div>
+
+        <div class="addon-card">
+          <div class="addon-icon">🛒</div>
+          <h3>Multi-instructor marketplace</h3>
+          <div class="addon-price">+ $4,200</div>
+          <p>Multiple instructors sign up, upload, and sell their own courses. Revenue split and payout tracking.</p>
+        </div>
+
+        <div class="addon-card">
+          <div class="addon-icon">🔗</div>
+          <h3>Affiliate / referral program</h3>
+          <div class="addon-price">+ $1,100</div>
+          <p>Unique referral links, commission tracking, automated payouts. Great for word-of-mouth growth.</p>
+        </div>
+
+        <div class="addon-card">
+          <div class="addon-icon">✉️</div>
+          <h3>Email marketing automation</h3>
+          <div class="addon-price">+ $1,000</div>
+          <p>Onboarding sequences, abandoned-cart recovery, course-completion follow-ups. Resend or SendGrid.</p>
+        </div>
+
+        <div class="addon-card">
+          <div class="addon-icon">🔒</div>
+          <h3>Enterprise DRM protection</h3>
+          <div class="addon-price">Custom quote</div>
+          <p>High-cost, enterprise-only protection for platforms that need stricter licensing controls. Not recommended for most course businesses because setup and ongoing fees are significant.</p>
+        </div>
+
+        <div class="addon-card">
+          <div class="addon-icon">🔁</div>
+          <h3>Subscriptions (Netflix-style)</h3>
+          <div class="addon-price">+ $1,300</div>
+          <p>Monthly or yearly access to all courses instead of per-course purchase. Auto-renew and cancellation flow.</p>
+        </div>
+
+        <div class="addon-card">
+          <div class="addon-icon">🎨</div>
+          <h3>Premium branding & UI upgrade</h3>
+          <div class="addon-price">+ $1,500</div>
+          <p>All packages include design already. This add-on is for a deeper brand refresh: logo refinement, expanded visual system, illustration direction, and more bespoke UI treatment.</p>
+        </div>
+
+        <div class="addon-card">
+          <div class="addon-icon">🔍</div>
+          <h3>SEO setup & blog</h3>
+          <div class="addon-price">+ $900</div>
+          <p>Schema markup, sitemap, Open Graph, blog module so you can rank for course-related Arabic and English keywords.</p>
+        </div>
+
+        <div class="addon-card">
+          <div class="addon-icon">📥</div>
+          <h3>Content migration</h3>
+          <div class="addon-price">+ $600 to $1,500</div>
+          <p>Move existing courses, students, and sales history from an old platform (Teachable, Thinkific, custom, etc.).</p>
+        </div>
+
+        <div class="addon-card">
+          <div class="addon-icon">🌍</div>
+          <h3>Extra languages</h3>
+          <div class="addon-price">+ $300 / language</div>
+          <p>Beyond Arabic and English. French is common for Lebanon. Translation memory so future updates are cheap.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== HOW IT WORKS (student) ========== -->
+  <section id="how-it-works">
+    <div class="container">
+      <span class="eyebrow">How It Works</span>
+      <h2>From the student's side, three steps.</h2>
+      <p style="max-width: 60ch; color: var(--text-muted);">Simple is the point. Every extra click loses a customer. The user journey is designed for one outcome: a paid student watching their first lesson within five minutes of arriving on the site.</p>
+
+      <div class="student-journey">
+        <div class="student-step">
+          <h3>Create your account</h3>
+          <p>Register with email and password. Verify the email. You are in.</p>
+        </div>
+        <div class="student-step">
+          <h3>Buy a course</h3>
+          <p>Pick a course. Pay through your gateway. Access unlocks the moment the payment is confirmed.</p>
+        </div>
+        <div class="student-step">
+          <h3>Start learning</h3>
+          <p>Open the course. Hit play. Pick up where you left off on any device, any time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== RUNNING COSTS ========== -->
+  <section id="running-costs">
+    <div class="container">
+      <span class="eyebrow">Running Costs</span>
+      <h2>What you pay to operate the platform.</h2>
+      <p style="max-width: 60ch; color: var(--text-muted);">These costs are paid directly by you to each service provider, monthly. They are independent of Voxire's build fee, and they scale with your usage.</p>
+
+      <div class="costs-note">
+        Numbers below reflect a typical <strong>AWS-first production setup</strong> where your backend handles auth and application logic, RDS handles the database layer, and Backblaze B2 handles video storage and delivery. In most scaling cases, <strong>AWS alone</strong> typically lands around <strong>$80 to $150 per month</strong>. Final running costs are confirmed at scoping. All figures in USD.
+      </div>
+
+      <div class="costs-table-wrap">
+        <table class="costs-table">
+          <thead>
+            <tr>
+              <th>Service</th>
+              <th>Role</th>
+              <th>At launch (~500 students)</th>
+              <th>At growth (~2,000 students)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>AWS</td>
+              <td>App hosting, backend, auth, RDS, CDN</td>
+              <td class="cost">$45 to $80</td>
+              <td class="cost">$80 to $150</td>
+            </tr>
+            <tr>
+              <td>Backblaze B2</td>
+              <td>Video storage and media delivery</td>
+              <td class="cost">$10 to $15</td>
+              <td class="cost">$15 to $25</td>
+            </tr>
+            <tr>
+              <td>Resend</td>
+              <td>Transactional email</td>
+              <td class="cost">Free</td>
+              <td class="cost">$5 to $15</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="2">Estimated full monthly total</td>
+              <td>$55 to $95</td>
+              <td>$100 to $190</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <div class="costs-note" style="margin-top: 20px;">
+        <strong>Cheaper alternative we also use:</strong> a leaner stack with Vercel for frontend hosting, Railway or Render for the backend, a smaller managed Postgres setup, Backblaze B2 for video, and standard transactional email can reduce early monthly cost. Expect roughly <strong>$35 to $60 at launch</strong> and <strong>$60 to $110 at growth</strong>, depending on usage. That option is cheaper, but the AWS path is the stronger long-term setup.
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== DISCOVERY / FORM ========== -->
+  <section id="discovery">
+    <div class="container">
+      <span class="eyebrow">Tell Us About Your Project</span>
+      <h2>Answer below, get a real proposal back.</h2>
+      <p class="discovery-intro">Fill what you can. Skip what you can't. We come back within 24 hours with a locked scope, confirmed timeline, and a single price for your tier.</p>
+
+      <div id="form-wrapper">
+        <form id="proposal-form" class="proposal-form" novalidate>
+
+          <!-- Contact -->
+          <div class="form-section">
+            <div class="form-section-title">Your Contact</div>
+            <div class="form-field">
+              <label class="form-label" for="f-name">Full name <span class="required">*</span></label>
+              <input class="form-input" type="text" id="f-name" name="name" required placeholder="e.g. Sarah Khoury">
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="f-email">Email <span class="required">*</span></label>
+              <input class="form-input" type="email" id="f-email" name="email" required placeholder="you@example.com">
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="f-company">Company or brand name <span class="required">*</span></label>
+              <input class="form-input" type="text" id="f-company" name="company" required placeholder="The business or person behind the platform">
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="f-phone">WhatsApp or phone</label>
+              <input class="form-input" type="tel" id="f-phone" name="phone" placeholder="+961 ...">
+            </div>
+          </div>
+
+          <!-- Tier choice -->
+          <div class="form-section">
+            <div class="form-section-title">Which Tier Fits You</div>
+            <div class="form-field">
+              <label class="form-label">Pick the tier you're considering. You can change your mind later.</label>
+              <div class="option-pills">
+                <label class="pill"><input type="radio" name="tier" value="Tier 1: Starter ($4,800)"><span>Tier 1: Starter ($4,800)</span></label>
+                <label class="pill"><input type="radio" name="tier" value="Tier 2: Standard ($11,500)"><span>Tier 2: Standard ($11,500)</span></label>
+                <label class="pill"><input type="radio" name="tier" value="Tier 3: Premium ($22,000)"><span>Tier 3: Premium ($22,000)</span></label>
+                <label class="pill"><input type="radio" name="tier" value="Not sure yet"><span>Not sure yet</span></label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Add-ons -->
+          <div class="form-section">
+            <div class="form-section-title">Add-Ons You Want</div>
+            <div class="form-field">
+              <label class="form-label">Select any that apply. None are required.</label>
+              <div class="addon-select-grid">
+                <label class="addon-select"><input type="checkbox" name="addons" value="Native mobile apps (+$5,500)"><span class="addon-select-emoji">📱</span><span class="addon-select-body"><span class="addon-select-title">Native mobile apps</span><span class="addon-select-price">+ $5,500</span></span><span class="addon-select-check"></span></label>
+                <label class="addon-select"><input type="checkbox" name="addons" value="PWA install (+$600)"><span class="addon-select-emoji">📲</span><span class="addon-select-body"><span class="addon-select-title">PWA install</span><span class="addon-select-price">+ $600</span></span><span class="addon-select-check"></span></label>
+                <label class="addon-select"><input type="checkbox" name="addons" value="Live classes & Zoom (+$1,400)"><span class="addon-select-emoji">🎙️</span><span class="addon-select-body"><span class="addon-select-title">Live classes &amp; Zoom</span><span class="addon-select-price">+ $1,400</span></span><span class="addon-select-check"></span></label>
+                <label class="addon-select"><input type="checkbox" name="addons" value="Quizzes, exams & certificates (+$1,200)"><span class="addon-select-emoji">📜</span><span class="addon-select-body"><span class="addon-select-title">Quizzes, exams &amp; certificates</span><span class="addon-select-price">+ $1,200</span></span><span class="addon-select-check"></span></label>
+                <label class="addon-select"><input type="checkbox" name="addons" value="Advanced analytics (+$1,500)"><span class="addon-select-emoji">📊</span><span class="addon-select-body"><span class="addon-select-title">Advanced analytics</span><span class="addon-select-price">+ $1,500</span></span><span class="addon-select-check"></span></label>
+                <label class="addon-select"><input type="checkbox" name="addons" value="Multi-instructor marketplace (+$4,200)"><span class="addon-select-emoji">🛒</span><span class="addon-select-body"><span class="addon-select-title">Multi-instructor marketplace</span><span class="addon-select-price">+ $4,200</span></span><span class="addon-select-check"></span></label>
+                <label class="addon-select"><input type="checkbox" name="addons" value="Affiliate / referral program (+$1,100)"><span class="addon-select-emoji">🔗</span><span class="addon-select-body"><span class="addon-select-title">Affiliate / referral program</span><span class="addon-select-price">+ $1,100</span></span><span class="addon-select-check"></span></label>
+                <label class="addon-select"><input type="checkbox" name="addons" value="Email marketing automation (+$1,000)"><span class="addon-select-emoji">✉️</span><span class="addon-select-body"><span class="addon-select-title">Email marketing automation</span><span class="addon-select-price">+ $1,000</span></span><span class="addon-select-check"></span></label>
+                <label class="addon-select"><input type="checkbox" name="addons" value="DRM video protection (+$1,500 setup)"><span class="addon-select-emoji">🔒</span><span class="addon-select-body"><span class="addon-select-title">DRM video protection</span><span class="addon-select-price">+ $1,500 setup</span></span><span class="addon-select-check"></span></label>
+                <label class="addon-select"><input type="checkbox" name="addons" value="Subscriptions (Netflix-style) (+$1,300)"><span class="addon-select-emoji">🔁</span><span class="addon-select-body"><span class="addon-select-title">Subscriptions (Netflix-style)</span><span class="addon-select-price">+ $1,300</span></span><span class="addon-select-check"></span></label>
+                <label class="addon-select"><input type="checkbox" name="addons" value="Custom branding & UI (+$1,500)"><span class="addon-select-emoji">🎨</span><span class="addon-select-body"><span class="addon-select-title">Custom branding &amp; UI</span><span class="addon-select-price">+ $1,500</span></span><span class="addon-select-check"></span></label>
+                <label class="addon-select"><input type="checkbox" name="addons" value="SEO setup & blog (+$900)"><span class="addon-select-emoji">🔍</span><span class="addon-select-body"><span class="addon-select-title">SEO setup &amp; blog</span><span class="addon-select-price">+ $900</span></span><span class="addon-select-check"></span></label>
+                <label class="addon-select"><input type="checkbox" name="addons" value="Content migration (+$600 to $1,500)"><span class="addon-select-emoji">📥</span><span class="addon-select-body"><span class="addon-select-title">Content migration</span><span class="addon-select-price">+ $600 to $1,500</span></span><span class="addon-select-check"></span></label>
+                <label class="addon-select"><input type="checkbox" name="addons" value="Extra languages (+$700/language)"><span class="addon-select-emoji">🌍</span><span class="addon-select-body"><span class="addon-select-title">Extra languages</span><span class="addon-select-price">+ $700 / language</span></span><span class="addon-select-check"></span></label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Discovery: Business -->
+          <div class="form-section">
+            <div class="form-section-title">About Your Business</div>
+
+            <div class="form-field">
+              <label class="form-label" for="f-niche">Subject matter or niche <span class="required">*</span></label>
+              <input class="form-input" type="text" id="f-niche" name="niche" required placeholder="e.g. Lebanese cooking, finance, design, language">
+            </div>
+
+            <div class="form-field">
+              <label class="form-label">Is this a new business or extending an existing one?</label>
+              <div class="option-pills">
+                <label class="pill"><input type="radio" name="business_stage" value="New business"><span>New business</span></label>
+                <label class="pill"><input type="radio" name="business_stage" value="Extending existing"><span>Extending existing</span></label>
+                <label class="pill"><input type="radio" name="business_stage" value="Not sure"><span>Not sure</span></label>
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label class="form-label" for="f-target">Target learner</label>
+              <span class="form-hint">Age, location, profession, language. One or two sentences.</span>
+              <textarea class="form-textarea" id="f-target" name="target_learner" placeholder="e.g. Lebanese professionals aged 25-40, English-speaking, in marketing or design"></textarea>
+            </div>
+          </div>
+
+          <!-- Discovery: Content -->
+          <div class="form-section">
+            <div class="form-section-title">Content</div>
+
+            <div class="form-field">
+              <label class="form-label">How many courses at launch?</label>
+              <div class="option-pills">
+                <label class="pill"><input type="radio" name="course_count" value="1 to 3"><span>1 to 3</span></label>
+                <label class="pill"><input type="radio" name="course_count" value="4 to 10"><span>4 to 10</span></label>
+                <label class="pill"><input type="radio" name="course_count" value="11 to 25"><span>11 to 25</span></label>
+                <label class="pill"><input type="radio" name="course_count" value="More than 25"><span>More than 25</span></label>
+                <label class="pill"><input type="radio" name="course_count" value="Not sure yet"><span>Not sure yet</span></label>
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label class="form-label">Pre-recorded, live, or both?</label>
+              <div class="option-pills">
+                <label class="pill"><input type="radio" name="content_type" value="Pre-recorded"><span>Pre-recorded</span></label>
+                <label class="pill"><input type="radio" name="content_type" value="Live sessions"><span>Live sessions</span></label>
+                <label class="pill"><input type="radio" name="content_type" value="Both"><span>Both</span></label>
+                <label class="pill"><input type="radio" name="content_type" value="Not sure yet"><span>Not sure yet</span></label>
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label class="form-label">Who records and uploads?</label>
+              <div class="option-pills">
+                <label class="pill"><input type="radio" name="instructor_count" value="One person"><span>One person</span></label>
+                <label class="pill"><input type="radio" name="instructor_count" value="Multiple instructors"><span>Multiple instructors</span></label>
+                <label class="pill"><input type="radio" name="instructor_count" value="Not sure yet"><span>Not sure yet</span></label>
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label class="form-label">Approximate total video hours at launch?</label>
+              <div class="option-pills">
+                <label class="pill"><input type="radio" name="video_hours" value="Under 10 hours"><span>Under 10 hours</span></label>
+                <label class="pill"><input type="radio" name="video_hours" value="10 to 50 hours"><span>10 to 50 hours</span></label>
+                <label class="pill"><input type="radio" name="video_hours" value="50 to 100 hours"><span>50 to 100 hours</span></label>
+                <label class="pill"><input type="radio" name="video_hours" value="More than 100 hours"><span>More than 100 hours</span></label>
+                <label class="pill"><input type="radio" name="video_hours" value="Not sure yet"><span>Not sure yet</span></label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Discovery: Business Model -->
+          <div class="form-section">
+            <div class="form-section-title">Business Model</div>
+
+            <div class="form-field">
+              <label class="form-label">How are courses sold?</label>
+              <div class="option-pills">
+                <label class="pill"><input type="radio" name="sales_model" value="One-time purchase"><span>One-time purchase</span></label>
+                <label class="pill"><input type="radio" name="sales_model" value="Subscription"><span>Subscription</span></label>
+                <label class="pill"><input type="radio" name="sales_model" value="Both"><span>Both</span></label>
+                <label class="pill"><input type="radio" name="sales_model" value="Not sure yet"><span>Not sure yet</span></label>
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label class="form-label">Price range per course (USD)?</label>
+              <div class="option-pills">
+                <label class="pill"><input type="radio" name="price_range" value="Under $50"><span>Under $50</span></label>
+                <label class="pill"><input type="radio" name="price_range" value="$50 to $200"><span>$50 to $200</span></label>
+                <label class="pill"><input type="radio" name="price_range" value="$200 to $500"><span>$200 to $500</span></label>
+                <label class="pill"><input type="radio" name="price_range" value="More than $500"><span>More than $500</span></label>
+                <label class="pill"><input type="radio" name="price_range" value="Not sure yet"><span>Not sure yet</span></label>
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label class="form-label">Existing audience?</label>
+              <div class="option-pills">
+                <label class="pill"><input type="radio" name="audience" value="Yes, sizeable"><span>Yes, sizeable</span></label>
+                <label class="pill"><input type="radio" name="audience" value="Yes, small but engaged"><span>Yes, small but engaged</span></label>
+                <label class="pill"><input type="radio" name="audience" value="Starting to build"><span>Starting to build</span></label>
+                <label class="pill"><input type="radio" name="audience" value="No audience yet"><span>No audience yet</span></label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Discovery: Technical -->
+          <div class="form-section">
+            <div class="form-section-title">Technical</div>
+
+            <div class="form-field">
+              <label class="form-label" for="f-gateway">Payment gateway you have or prefer</label>
+              <span class="form-hint">e.g. Tap, MontyPay, Areeba, Whish, OMT, Stripe. Write "none" if you have not picked yet.</span>
+              <input class="form-input" type="text" id="f-gateway" name="payment_gateway" placeholder="Name of the gateway, or 'none'">
+            </div>
+
+            <div class="form-field">
+              <label class="form-label">Domain already registered?</label>
+              <div class="option-pills">
+                <label class="pill"><input type="radio" name="domain" value="Yes, owned"><span>Yes, owned</span></label>
+                <label class="pill"><input type="radio" name="domain" value="No, will buy"><span>No, will buy</span></label>
+                <label class="pill"><input type="radio" name="domain" value="Need help choosing"><span>Need help choosing</span></label>
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label class="form-label">Language(s) for the platform?</label>
+              <div class="option-pills">
+                <label class="pill"><input type="radio" name="language" value="English only"><span>English only</span></label>
+                <label class="pill"><input type="radio" name="language" value="Arabic only"><span>Arabic only</span></label>
+                <label class="pill"><input type="radio" name="language" value="Bilingual EN + AR"><span>Bilingual EN + AR</span></label>
+                <label class="pill"><input type="radio" name="language" value="More than two languages"><span>More than two</span></label>
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label class="form-label">Existing branding?</label>
+              <div class="option-pills">
+                <label class="pill"><input type="radio" name="branding" value="Complete brand kit"><span>Complete brand kit</span></label>
+                <label class="pill"><input type="radio" name="branding" value="Partial (logo only)"><span>Partial (logo only)</span></label>
+                <label class="pill"><input type="radio" name="branding" value="None, need design help"><span>None, need design help</span></label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Discovery: Timeline + Budget -->
+          <div class="form-section">
+            <div class="form-section-title">Timeline and Budget</div>
+
+            <div class="form-field">
+              <label class="form-label">When do you want to launch?</label>
+              <div class="option-pills">
+                <label class="pill"><input type="radio" name="launch_target" value="ASAP"><span>ASAP</span></label>
+                <label class="pill"><input type="radio" name="launch_target" value="1 to 2 months"><span>1 to 2 months</span></label>
+                <label class="pill"><input type="radio" name="launch_target" value="3 to 4 months"><span>3 to 4 months</span></label>
+                <label class="pill"><input type="radio" name="launch_target" value="5+ months"><span>5+ months</span></label>
+                <label class="pill"><input type="radio" name="launch_target" value="Flexible"><span>Flexible</span></label>
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label class="form-label">Budget range for the build (USD)?</label>
+              <div class="option-pills">
+                <label class="pill"><input type="radio" name="budget" value="Under $5K"><span>Under $5K</span></label>
+                <label class="pill"><input type="radio" name="budget" value="$5K to $10K"><span>$5K to $10K</span></label>
+                <label class="pill"><input type="radio" name="budget" value="$10K to $20K"><span>$10K to $20K</span></label>
+                <label class="pill"><input type="radio" name="budget" value="$20K+"><span>$20K+</span></label>
+                <label class="pill"><input type="radio" name="budget" value="Prefer to discuss"><span>Prefer to discuss</span></label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Anything else -->
+          <div class="form-section">
+            <div class="form-section-title">Anything Else</div>
+            <div class="form-field">
+              <label class="form-label" for="f-notes">Anything we should know?</label>
+              <span class="form-hint">Questions, concerns, ambitions. Optional.</span>
+              <textarea class="form-textarea" id="f-notes" name="notes" rows="3"></textarea>
+            </div>
+          </div>
+
+          <!-- Live project total -->
+          <div class="form-total" id="form-total" aria-live="polite">
+            <div class="form-total-eyebrow">Your Project Total</div>
+            <div class="form-total-price" id="total-amount">$0 USD</div>
+            <div class="form-total-breakdown" id="total-breakdown"><span class="muted">Pick a tier or an add-on to see your number.</span></div>
+            <div class="form-total-note" id="total-note" hidden>Some add-ons are priced from an estimate. Final number locked after scoping with Voxire.</div>
+          </div>
+
+          <!-- Submit -->
+          <div class="form-submit-area">
+            <button type="submit" class="form-submit" id="submit-btn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              Send to Voxire
+            </button>
+            <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
+          </div>
+
+        </form>
+
+        <!-- Success state -->
+        <div class="form-success-panel" id="success-panel" hidden>
+          <div class="check-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#111118" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <h3>Got it.</h3>
+          <p>We received your answers. Voxire replies within 24 hours via WhatsApp or email with a locked scope, confirmed timeline, and a single price for your tier.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== WHY VOXIRE ========== -->
+  <section id="why-voxire" class="why">
+    <div class="container">
+      <span class="eyebrow">Why Voxire</span>
+      <h2>Builders, not consultants.</h2>
+      <p style="max-width: 60ch; color: var(--text-muted);">Voxire was founded in 2023 to solve a specific problem: Lebanese businesses splitting work across multiple agencies with poor coordination. One team handles everything, from the first line of code to the first paying student.</p>
+
+      <div class="why-points">
+        <div class="why-card">
+          <h3>One team, end to end</h3>
+          <p>Strategy, design, development, payment integration, launch. No hand-offs between agencies. No misalignment. One point of contact, one team accountable for the outcome.</p>
+        </div>
+        <div class="why-card">
+          <h3>We ship real products</h3>
+          <p>Voxire built RTYLR, a commerce operating system used in 20+ countries. We know what shipping a SaaS product takes because we have done it ourselves.</p>
+        </div>
+        <div class="why-card">
+          <h3>Built for Lebanon and MENA</h3>
+          <p>Based in Beirut. Native understanding of local payment, bilingual requirements, and what works for Arab audiences. Global standards with regional insight.</p>
+        </div>
+        <div class="why-card">
+          <h3>You own everything</h3>
+          <p>On day one of launch, the code, the data, the design files, and the deployment are yours. No vendor lock-in. No platform-rental dependency.</p>
+        </div>
+      </div>
+
+      <div class="proof-section">
+        <span class="eyebrow">Proof points</span>
+        <h3 style="font-size: 1.25rem; margin-bottom: 0;">Real outcomes from real Voxire projects.</h3>
+        <div class="proof-grid">
+          <div class="proof-card">
+            <div class="proof-result">0 to 1,200 users</div>
+            <div class="proof-context">Active users in 90 days, MENA B2B SaaS product and growth engagement.</div>
+          </div>
+          <div class="proof-card">
+            <div class="proof-result">+214% traffic</div>
+            <div class="proof-context">Organic traffic growth in 6 months, Beirut restaurant group, web and SEO.</div>
+          </div>
+          <div class="proof-card">
+            <div class="proof-result">+312% leads</div>
+            <div class="proof-context">Qualified leads per month, real estate platform, marketing and SEO.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== NEXT STEPS ========== -->
+  <section id="next-steps" class="next-steps">
+    <div class="container">
+      <span class="eyebrow">Next Steps</span>
+      <h2>Ready when you are.</h2>
+      <p>Reply with answers to the questions above, or schedule a 30-minute call. We will return a locked scope, a confirmed timeline, and a contract within 3 business days.</p>
+
+      <div class="cta-row">
+        <a href="https://wa.me/9613940708" class="cta-button cta-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          WhatsApp Voxire
+        </a>
+        <a href="mailto:info@voxire.com" class="cta-button cta-secondary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Email info@voxire.com
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ========== FOOTER ========== -->
+<footer>
+  <div class="container">
+    <div class="wordmark">Voxire</div>
+    <p>Your ambition. Our execution. The world notices.</p>
+    <p>Beirut, Lebanon &middot; +961 3 940 708 &middot; info@voxire.com</p>
+    <p style="margin-top: 12px; color: var(--text-dim);">Proposal prepared May 2026 &middot; Valid for 30 days</p>
+  </div>
+</footer>
+
+<script>
+  // ========================================
+  // FORM: LIVE TOTAL + SUBMISSION
+  // ========================================
+  (function () {
+    const form = document.getElementById('proposal-form');
+    const submitBtn = document.getElementById('submit-btn');
+    const statusEl = document.getElementById('form-status');
+    const successPanel = document.getElementById('success-panel');
+
+    // Total UI
+    const totalWrap = document.getElementById('form-total');
+    const totalAmount = document.getElementById('total-amount');
+    const totalBreakdown = document.getElementById('total-breakdown');
+    const totalNote = document.getElementById('total-note');
+
+    // Snapshot of latest calculated total
+    let currentTotal = 0;
+    let currentBreakdownLabel = '';
+
+    if (!form) return;
+
+    // ----- TOTAL CALCULATION -----
+
+    function extractPrice(str) {
+      if (!str) return 0;
+      const m = String(str).match(/\$([\d,]+)/);
+      if (!m) return 0;
+      return parseInt(m[1].replace(/,/g, ''), 10) || 0;
+    }
+
+    function isEstimateAddon(str) {
+      // True if the add-on has a range price, per-language pricing, or setup-only label
+      return /\bto \$|\/\s*language|setup/i.test(String(str || ''));
+    }
+
+    function formatMoney(n) {
+      return '$' + n.toLocaleString('en-US') + ' USD';
+    }
+
+    function updateTotal() {
+      let tierPrice = 0;
+      let tierLabel = '';
+      const tierInput = document.querySelector('input[name="tier"]:checked');
+      if (tierInput) {
+        tierPrice = extractPrice(tierInput.value);
+        tierLabel = tierInput.value;
+      }
+
+      let addonsTotal = 0;
+      let addonsCount = 0;
+      let hasEstimate = false;
+      document.querySelectorAll('input[name="addons"]:checked').forEach(function (cb) {
+        addonsTotal += extractPrice(cb.value);
+        addonsCount++;
+        if (isEstimateAddon(cb.value)) hasEstimate = true;
+      });
+
+      const total = tierPrice + addonsTotal;
+      currentTotal = total;
+
+      // Empty state
+      if (tierPrice === 0 && addonsCount === 0) {
+        totalAmount.textContent = '$0 USD';
+        totalBreakdown.innerHTML = '<span class="muted">Pick a tier or an add-on to see your number.</span>';
+        totalNote.hidden = true;
+        currentBreakdownLabel = '';
+        return;
+      }
+
+      totalAmount.textContent = formatMoney(total);
+
+      const parts = [];
+      if (tierPrice > 0) {
+        parts.push(formatMoney(tierPrice) + ' base');
+      }
+      if (addonsCount > 0) {
+        const word = addonsCount === 1 ? 'add-on' : 'add-ons';
+        parts.push(formatMoney(addonsTotal) + ' (' + addonsCount + ' ' + word + ')');
+      }
+      totalBreakdown.textContent = parts.join('  +  ');
+      currentBreakdownLabel = parts.join(' + ');
+
+      totalNote.hidden = !hasEstimate;
+
+      // Subtle pulse to confirm the change
+      totalWrap.classList.remove('is-changing');
+      void totalWrap.offsetWidth;
+      totalWrap.classList.add('is-changing');
+    }
+
+    // Trigger on any tier or add-on change
+    form.addEventListener('change', function (e) {
+      if (e.target && (e.target.name === 'tier' || e.target.name === 'addons')) {
+        updateTotal();
+      }
+    });
+
+    // Initial render
+    updateTotal();
+
+    // ----- SUBMISSION -----
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      statusEl.textContent = '';
+      statusEl.classList.remove('is-error', 'is-success');
+
+      // Basic required-field check
+      const required = form.querySelectorAll('[required]');
+      let missing = [];
+      required.forEach(function (input) {
+        if (!input.value.trim()) {
+          missing.push(input.previousElementSibling ? input.previousElementSibling.textContent.replace('*', '').trim() : input.name);
+          input.style.borderColor = '#E8736A';
+        } else {
+          input.style.borderColor = '';
+        }
+      });
+      if (missing.length) {
+        statusEl.textContent = 'Please fill: ' + missing.join(', ');
+        statusEl.classList.add('is-error');
+        return;
+      }
+
+      // Build payload
+      const formData = new FormData(form);
+      const payload = {};
+      formData.forEach(function (value, key) {
+        if (key === 'addons') {
+          if (!payload.addons) payload.addons = [];
+          payload.addons.push(value);
+        } else {
+          payload[key] = value;
+        }
+      });
+
+      // Add the live-calculated total + breakdown
+      payload.estimated_total = currentTotal > 0 ? formatMoney(currentTotal) : '';
+      payload.estimated_breakdown = currentBreakdownLabel;
+
+      // Lock submit button
+      submitBtn.disabled = true;
+      const originalBtnHTML = submitBtn.innerHTML;
+      submitBtn.innerHTML = 'Sending...';
+
+      try {
+        const response = await fetch('/api/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        if (!response.ok) {
+          const errBody = await response.json().catch(function () { return {}; });
+          throw new Error(errBody.error || 'Request failed with status ' + response.status);
+        }
+
+        // Swap form for success panel
+        form.hidden = true;
+        successPanel.hidden = false;
+        successPanel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } catch (err) {
+        statusEl.textContent = 'Something went wrong: ' + err.message + '. Please email info@voxire.com directly.';
+        statusEl.classList.add('is-error');
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtnHTML;
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>
