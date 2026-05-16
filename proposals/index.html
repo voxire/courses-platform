@@ -452,9 +452,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
     line-height: 1;
     margin-bottom: 16px;
+    color: var(--voxire-teal);
+  }
+
+  .addon-icon svg {
+    width: 24px;
+    height: 24px;
   }
 
   .addon-card h3 {
@@ -656,9 +661,23 @@
   }
 
   .addon-select-emoji {
-    font-size: 1.25rem;
-    line-height: 1;
     flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    color: var(--text-muted);
+    transition: color 0.15s ease;
+  }
+
+  .addon-select-emoji svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .addon-select:has(input:checked) .addon-select-emoji {
+    color: var(--voxire-teal);
   }
 
   .addon-select-body {
@@ -1838,98 +1857,98 @@
       <div class="addon-grid">
 
         <div class="addon-card">
-          <div class="addon-icon">📱</div>
+          <div class="addon-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2.5"/><line x1="12" y1="18" x2="12" y2="18.5"/></svg></div>
           <h3>Native mobile apps (iOS + Android)</h3>
           <div class="addon-price">+ $5,500</div>
           <p>React Native build, shared codebase, App Store and Play Store submission. Offline lesson download is +$800.</p>
         </div>
 
         <div class="addon-card">
-          <div class="addon-icon">📲</div>
+          <div class="addon-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2.5"/><path d="M12 8v8"/><polyline points="9 13 12 16 15 13"/></svg></div>
           <h3>PWA install (alternative to native)</h3>
           <div class="addon-price">+ $600</div>
           <p>Installable on home screen, push notifications. No App Store fees. Great middle ground if you're not ready for native.</p>
         </div>
 
         <div class="addon-card">
-          <div class="addon-icon">🎙️</div>
+          <div class="addon-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div>
           <h3>Live classes & Zoom integration</h3>
           <div class="addon-price">+ $1,400</div>
           <p>Scheduled live sessions, attendee enrollment from inside the platform, auto-record into the course library.</p>
         </div>
 
         <div class="addon-card">
-          <div class="addon-icon">📜</div>
+          <div class="addon-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.5 13.5L17 22l-5-3-5 3 1.5-8.5"/></svg></div>
           <h3>Quizzes, exams & certificates</h3>
           <div class="addon-price">+ $1,200</div>
           <p>Auto-graded multiple choice and open-ended questions, branded PDF certificates on completion.</p>
         </div>
 
         <div class="addon-card">
-          <div class="addon-icon">📊</div>
+          <div class="addon-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
           <h3>Advanced analytics dashboards</h3>
           <div class="addon-price">+ $1,500</div>
           <p>Revenue by course, drop-off points, engagement heatmaps, exportable reports, and video playback quality tracking.</p>
         </div>
 
         <div class="addon-card">
-          <div class="addon-icon">🛒</div>
+          <div class="addon-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div>
           <h3>Multi-instructor marketplace</h3>
           <div class="addon-price">+ $4,200</div>
           <p>Multiple instructors sign up, upload, and sell their own courses. Revenue split and payout tracking.</p>
         </div>
 
         <div class="addon-card">
-          <div class="addon-icon">🔗</div>
+          <div class="addon-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div>
           <h3>Affiliate / referral program</h3>
           <div class="addon-price">+ $1,100</div>
           <p>Unique referral links, commission tracking, automated payouts. Great for word-of-mouth growth.</p>
         </div>
 
         <div class="addon-card">
-          <div class="addon-icon">✉️</div>
+          <div class="addon-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22 6 12 13 2 6"/></svg></div>
           <h3>Email marketing automation</h3>
           <div class="addon-price">+ $1,000</div>
           <p>Onboarding sequences, abandoned-cart recovery, course-completion follow-ups. Resend or SendGrid.</p>
         </div>
 
         <div class="addon-card">
-          <div class="addon-icon">🔒</div>
+          <div class="addon-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
           <h3>Enterprise DRM protection</h3>
           <div class="addon-price">Custom quote</div>
           <p>High-cost, enterprise-only protection for platforms that need stricter licensing controls. Not recommended for most course businesses because setup and ongoing fees are significant.</p>
         </div>
 
         <div class="addon-card">
-          <div class="addon-icon">🔁</div>
+          <div class="addon-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></div>
           <h3>Subscriptions (Netflix-style)</h3>
           <div class="addon-price">+ $1,300</div>
           <p>Monthly or yearly access to all courses instead of per-course purchase. Auto-renew and cancellation flow.</p>
         </div>
 
         <div class="addon-card">
-          <div class="addon-icon">🎨</div>
+          <div class="addon-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="13.5" cy="6.5" r=".75"/><circle cx="17.5" cy="10.5" r=".75"/><circle cx="8.5" cy="7.5" r=".75"/><circle cx="6.5" cy="12.5" r=".75"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg></div>
           <h3>Premium branding & UI upgrade</h3>
           <div class="addon-price">+ $1,500</div>
           <p>All packages include design already. This add-on is for a deeper brand refresh: logo refinement, expanded visual system, illustration direction, and more bespoke UI treatment.</p>
         </div>
 
         <div class="addon-card">
-          <div class="addon-icon">🔍</div>
+          <div class="addon-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
           <h3>SEO setup & blog</h3>
           <div class="addon-price">+ $900</div>
           <p>Schema markup, sitemap, Open Graph, blog module so you can rank for course-related Arabic and English keywords.</p>
         </div>
 
         <div class="addon-card">
-          <div class="addon-icon">📥</div>
+          <div class="addon-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div>
           <h3>Content migration</h3>
           <div class="addon-price">+ $600 to $1,500</div>
           <p>Move existing courses, students, and sales history from an old platform (Teachable, Thinkific, custom, etc.).</p>
         </div>
 
         <div class="addon-card">
-          <div class="addon-icon">🌍</div>
+          <div class="addon-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
           <h3>Extra languages</h3>
           <div class="addon-price">+ $300 / language</div>
           <p>Beyond Arabic and English. French is common for Lebanon. Translation memory so future updates are cheap.</p>
@@ -2071,20 +2090,20 @@
             <div class="form-field">
               <label class="form-label">Select any that apply. None are required.</label>
               <div class="addon-select-grid">
-                <label class="addon-select"><input type="checkbox" name="addons" value="Native mobile apps (+$5,500)"><span class="addon-select-emoji">📱</span><span class="addon-select-body"><span class="addon-select-title">Native mobile apps</span><span class="addon-select-price">+ $5,500</span></span><span class="addon-select-check"></span></label>
-                <label class="addon-select"><input type="checkbox" name="addons" value="PWA install (+$600)"><span class="addon-select-emoji">📲</span><span class="addon-select-body"><span class="addon-select-title">PWA install</span><span class="addon-select-price">+ $600</span></span><span class="addon-select-check"></span></label>
-                <label class="addon-select"><input type="checkbox" name="addons" value="Live classes & Zoom (+$1,400)"><span class="addon-select-emoji">🎙️</span><span class="addon-select-body"><span class="addon-select-title">Live classes &amp; Zoom</span><span class="addon-select-price">+ $1,400</span></span><span class="addon-select-check"></span></label>
-                <label class="addon-select"><input type="checkbox" name="addons" value="Quizzes, exams & certificates (+$1,200)"><span class="addon-select-emoji">📜</span><span class="addon-select-body"><span class="addon-select-title">Quizzes, exams &amp; certificates</span><span class="addon-select-price">+ $1,200</span></span><span class="addon-select-check"></span></label>
-                <label class="addon-select"><input type="checkbox" name="addons" value="Advanced analytics (+$1,500)"><span class="addon-select-emoji">📊</span><span class="addon-select-body"><span class="addon-select-title">Advanced analytics</span><span class="addon-select-price">+ $1,500</span></span><span class="addon-select-check"></span></label>
-                <label class="addon-select"><input type="checkbox" name="addons" value="Multi-instructor marketplace (+$4,200)"><span class="addon-select-emoji">🛒</span><span class="addon-select-body"><span class="addon-select-title">Multi-instructor marketplace</span><span class="addon-select-price">+ $4,200</span></span><span class="addon-select-check"></span></label>
-                <label class="addon-select"><input type="checkbox" name="addons" value="Affiliate / referral program (+$1,100)"><span class="addon-select-emoji">🔗</span><span class="addon-select-body"><span class="addon-select-title">Affiliate / referral program</span><span class="addon-select-price">+ $1,100</span></span><span class="addon-select-check"></span></label>
-                <label class="addon-select"><input type="checkbox" name="addons" value="Email marketing automation (+$1,000)"><span class="addon-select-emoji">✉️</span><span class="addon-select-body"><span class="addon-select-title">Email marketing automation</span><span class="addon-select-price">+ $1,000</span></span><span class="addon-select-check"></span></label>
-                <label class="addon-select"><input type="checkbox" name="addons" value="Enterprise DRM protection (Custom quote)"><span class="addon-select-emoji">🔒</span><span class="addon-select-body"><span class="addon-select-title">Enterprise DRM protection</span><span class="addon-select-price">Custom quote</span></span><span class="addon-select-check"></span></label>
-                <label class="addon-select"><input type="checkbox" name="addons" value="Subscriptions (Netflix-style) (+$1,300)"><span class="addon-select-emoji">🔁</span><span class="addon-select-body"><span class="addon-select-title">Subscriptions (Netflix-style)</span><span class="addon-select-price">+ $1,300</span></span><span class="addon-select-check"></span></label>
-                <label class="addon-select"><input type="checkbox" name="addons" value="Premium branding & UI upgrade (+$1,500)"><span class="addon-select-emoji">🎨</span><span class="addon-select-body"><span class="addon-select-title">Premium branding &amp; UI upgrade</span><span class="addon-select-price">+ $1,500</span></span><span class="addon-select-check"></span></label>
-                <label class="addon-select"><input type="checkbox" name="addons" value="SEO setup & blog (+$900)"><span class="addon-select-emoji">🔍</span><span class="addon-select-body"><span class="addon-select-title">SEO setup &amp; blog</span><span class="addon-select-price">+ $900</span></span><span class="addon-select-check"></span></label>
-                <label class="addon-select"><input type="checkbox" name="addons" value="Content migration (+$600 to $1,500)"><span class="addon-select-emoji">📥</span><span class="addon-select-body"><span class="addon-select-title">Content migration</span><span class="addon-select-price">+ $600 to $1,500</span></span><span class="addon-select-check"></span></label>
-                <label class="addon-select"><input type="checkbox" name="addons" value="Extra languages (+$300/language)"><span class="addon-select-emoji">🌍</span><span class="addon-select-body"><span class="addon-select-title">Extra languages</span><span class="addon-select-price">+ $300 / language</span></span><span class="addon-select-check"></span></label>
+                <label class="addon-select"><input type="checkbox" name="addons" value="Native mobile apps (+$5,500)"><span class="addon-select-emoji"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2.5"/><line x1="12" y1="18" x2="12" y2="18.5"/></svg></span><span class="addon-select-body"><span class="addon-select-title">Native mobile apps</span><span class="addon-select-price">+ $5,500</span></span><span class="addon-select-check"></span></label>
+                <label class="addon-select"><input type="checkbox" name="addons" value="PWA install (+$600)"><span class="addon-select-emoji"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2.5"/><path d="M12 8v8"/><polyline points="9 13 12 16 15 13"/></svg></span><span class="addon-select-body"><span class="addon-select-title">PWA install</span><span class="addon-select-price">+ $600</span></span><span class="addon-select-check"></span></label>
+                <label class="addon-select"><input type="checkbox" name="addons" value="Live classes & Zoom (+$1,400)"><span class="addon-select-emoji"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></span><span class="addon-select-body"><span class="addon-select-title">Live classes &amp; Zoom</span><span class="addon-select-price">+ $1,400</span></span><span class="addon-select-check"></span></label>
+                <label class="addon-select"><input type="checkbox" name="addons" value="Quizzes, exams & certificates (+$1,200)"><span class="addon-select-emoji"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.5 13.5L17 22l-5-3-5 3 1.5-8.5"/></svg></span><span class="addon-select-body"><span class="addon-select-title">Quizzes, exams &amp; certificates</span><span class="addon-select-price">+ $1,200</span></span><span class="addon-select-check"></span></label>
+                <label class="addon-select"><input type="checkbox" name="addons" value="Advanced analytics (+$1,500)"><span class="addon-select-emoji"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></span><span class="addon-select-body"><span class="addon-select-title">Advanced analytics</span><span class="addon-select-price">+ $1,500</span></span><span class="addon-select-check"></span></label>
+                <label class="addon-select"><input type="checkbox" name="addons" value="Multi-instructor marketplace (+$4,200)"><span class="addon-select-emoji"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></span><span class="addon-select-body"><span class="addon-select-title">Multi-instructor marketplace</span><span class="addon-select-price">+ $4,200</span></span><span class="addon-select-check"></span></label>
+                <label class="addon-select"><input type="checkbox" name="addons" value="Affiliate / referral program (+$1,100)"><span class="addon-select-emoji"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></span><span class="addon-select-body"><span class="addon-select-title">Affiliate / referral program</span><span class="addon-select-price">+ $1,100</span></span><span class="addon-select-check"></span></label>
+                <label class="addon-select"><input type="checkbox" name="addons" value="Email marketing automation (+$1,000)"><span class="addon-select-emoji"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22 6 12 13 2 6"/></svg></span><span class="addon-select-body"><span class="addon-select-title">Email marketing automation</span><span class="addon-select-price">+ $1,000</span></span><span class="addon-select-check"></span></label>
+                <label class="addon-select"><input type="checkbox" name="addons" value="Enterprise DRM protection (Custom quote)"><span class="addon-select-emoji"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></span><span class="addon-select-body"><span class="addon-select-title">Enterprise DRM protection</span><span class="addon-select-price">Custom quote</span></span><span class="addon-select-check"></span></label>
+                <label class="addon-select"><input type="checkbox" name="addons" value="Subscriptions (Netflix-style) (+$1,300)"><span class="addon-select-emoji"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></span><span class="addon-select-body"><span class="addon-select-title">Subscriptions (Netflix-style)</span><span class="addon-select-price">+ $1,300</span></span><span class="addon-select-check"></span></label>
+                <label class="addon-select"><input type="checkbox" name="addons" value="Premium branding & UI upgrade (+$1,500)"><span class="addon-select-emoji"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="13.5" cy="6.5" r=".75"/><circle cx="17.5" cy="10.5" r=".75"/><circle cx="8.5" cy="7.5" r=".75"/><circle cx="6.5" cy="12.5" r=".75"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg></span><span class="addon-select-body"><span class="addon-select-title">Premium branding &amp; UI upgrade</span><span class="addon-select-price">+ $1,500</span></span><span class="addon-select-check"></span></label>
+                <label class="addon-select"><input type="checkbox" name="addons" value="SEO setup & blog (+$900)"><span class="addon-select-emoji"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span><span class="addon-select-body"><span class="addon-select-title">SEO setup &amp; blog</span><span class="addon-select-price">+ $900</span></span><span class="addon-select-check"></span></label>
+                <label class="addon-select"><input type="checkbox" name="addons" value="Content migration (+$600 to $1,500)"><span class="addon-select-emoji"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></span><span class="addon-select-body"><span class="addon-select-title">Content migration</span><span class="addon-select-price">+ $600 to $1,500</span></span><span class="addon-select-check"></span></label>
+                <label class="addon-select"><input type="checkbox" name="addons" value="Extra languages (+$300/language)"><span class="addon-select-emoji"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span><span class="addon-select-body"><span class="addon-select-title">Extra languages</span><span class="addon-select-price">+ $300 / language</span></span><span class="addon-select-check"></span></label>
               </div>
             </div>
           </div>
