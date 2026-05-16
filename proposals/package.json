@@ -1,0 +1,13 @@
+{
+  "name": "voxire-courses-platform-proposal",
+  "version": "1.0.0",
+  "description": "Voxire course platform proposal site with form submission backend",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "resend": "^4.0.1"
+  }
+}
