@@ -158,6 +158,21 @@
   }
 
   .wordmark {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    line-height: 1;
+  }
+
+  .wordmark-icon {
+    height: 30px;
+    width: auto;
+    display: block;
+    flex-shrink: 0;
+  }
+
+  .wordmark-text {
     font-size: 1.5rem;
     font-weight: 700;
     letter-spacing: -0.03em;
@@ -166,6 +181,7 @@
     background-clip: text;
     -webkit-text-fill-color: transparent;
     color: transparent;
+    line-height: 1;
   }
 
   .header-meta {
@@ -1410,8 +1426,16 @@
   }
 
   footer .wordmark {
-    font-size: 1.125rem;
     margin-bottom: 12px;
+    justify-content: center;
+  }
+
+  footer .wordmark-icon {
+    height: 38px;
+  }
+
+  footer .wordmark-text {
+    font-size: 1.25rem;
   }
 
   footer p {
@@ -1547,7 +1571,7 @@
       box-shadow: none;
     }
 
-    .gradient-text, .stat-value, .wordmark, .investment-price, .proof-result {
+    .gradient-text, .stat-value, .wordmark-text, .investment-price, .proof-result {
       background: none;
       -webkit-text-fill-color: #5A4398;
       color: #5A4398;
@@ -1574,7 +1598,10 @@
 <!-- ========== HEADER ========== -->
 <header>
   <div class="container header-inner">
-    <a href="https://voxire.com" class="wordmark" aria-label="Voxire">Voxire</a>
+    <a href="https://voxire.com" class="wordmark" aria-label="Voxire">
+      <img src="/image/Voxire-logo-enblm-m.png" alt="" class="wordmark-icon">
+      <span class="wordmark-text">Voxire</span>
+    </a>
     <div class="header-meta">
       <div>Proposal: Course Platform</div>
       <div>May 2026</div>
@@ -2348,9 +2375,12 @@
 <!-- ========== FOOTER ========== -->
 <footer>
   <div class="container">
-    <div class="wordmark">Voxire</div>
+    <a href="https://voxire.com" class="wordmark" aria-label="Voxire">
+      <img src="/image/Voxire-logo-enblm-m.png" alt="" class="wordmark-icon">
+      <span class="wordmark-text">Voxire</span>
+    </a>
     <p>Your ambition. Our execution. The world notices.</p>
-    <p>Beirut, Lebanon &middot; +961 3 940 708 &middot; info@voxire.com</p>
+    <p>Beirut, Lebanon &middot; <a href="https://voxire.com">voxire.com</a> &middot; <a href="mailto:info@voxire.com">info@voxire.com</a> &middot; +961 3 940 708</p>
     <p style="margin-top: 12px; color: var(--text-dim);">Proposal prepared May 2026 &middot; Valid for 30 days</p>
   </div>
 </footer>
